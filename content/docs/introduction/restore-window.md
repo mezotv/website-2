@@ -118,7 +118,7 @@ The restore window determines what's available for these features:
 - [Snapshots](/docs/guides/backup-restore): Capture and restore from specific points
 
 <Admonition type="note">
-The restore window is for branch point-in-time recovery (PITR), which restores data to a previous state. This is different from the deletion recovery period, which allows you to recover (undelete) a deleted project. For information about recovering deleted projects, see [Project recovery](/docs/manage/projects#recover-a-deleted-project).
+The restore window is for branch point-in-time recovery (PITR), which restores data to a previous state. This is different from the deletion recovery period, which allows you to recover (undelete) a deleted project or branch. See [Project recovery](/docs/manage/projects#recover-a-deleted-project) and [Branch recovery](/docs/manage/branches#recover-a-deleted-branch).
 </Admonition>
 
 <NeedHelp/>

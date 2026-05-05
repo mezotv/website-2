@@ -24,6 +24,7 @@ updatedOn: '2026-02-06T22:07:33.086Z'
 
 <DocsList title="Related docs" theme="docs">
   <a href="/docs/introduction/restore-window">Configure restore window</a>
+  <a href="/docs/manage/branches#recover-a-deleted-branch">Recover a deleted branch</a>
 </DocsList>
 </InfoBlock>
 

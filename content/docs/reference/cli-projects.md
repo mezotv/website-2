@@ -316,6 +316,8 @@ neon projects delete muddy-wood-859533
 
 Information about the deleted project is displayed. You can verify that the project was deleted by running `neon projects list`.
 
+Projects are soft-deleted by default, and enter a 7-day [deletion recovery period](/docs/manage/projects#recover-a-deleted-project) before being permanently removed.
+
 ### recover
 
 <EarlyAccess />
