@@ -6,17 +6,26 @@ summary: >-
   `@neondatabase/neon-js`, including installation, provider setup, and
   configuration of common props for customization.
 enableTableOfContents: true
-updatedOn: '2026-03-23T12:18:17.917Z'
+updatedOn: '2026-05-12T20:18:01.470Z'
 ---
 
 <FeatureBetaProps feature_name="Neon Auth with Better Auth" />
 
-Quick reference for Neon Auth UI components from `@neondatabase/neon-js`. These components are built with [Better Auth UI](https://legacy.better-auth-ui.com/) and work with Neon Auth.
+Quick reference for Neon Auth UI components from `@neondatabase/auth-ui`. These components are built with [Better Auth UI](https://legacy.better-auth-ui.com/) and work with Neon Auth.
+
+<Admonition type="note" title="Migrating from older imports">
+Older releases re-exported the UI from `@neondatabase/auth/react/ui` and `@neondatabase/neon-js/auth/react/ui`. Those entrypoints are deprecated and will be removed in the next major version. Install `@neondatabase/auth-ui` directly and run the codemod to update existing imports:
+
+```bash
+npx -p @neondatabase/auth neon-auth-codemod --write <path>
+```
+
+</Admonition>
 
 ## Installation
 
 ```bash
-npm install @neondatabase/neon-js@latest
+npm install @neondatabase/neon-js@latest @neondatabase/auth-ui
 ```
 
 ## Provider Setup
@@ -26,8 +35,8 @@ Wrap your app with `NeonAuthUIProvider` to enable the UI components. The provide
 ### Basic Setup
 
 ```tsx
-import { NeonAuthUIProvider } from '@neondatabase/neon-js/auth/react';
-import '@neondatabase/neon-js/ui/css';
+import { NeonAuthUIProvider } from '@neondatabase/auth-ui';
+import '@neondatabase/auth-ui/css';
 import { authClient } from './auth';
 
 function App() {
@@ -49,13 +58,14 @@ function App() {
 | `avatar`                     | `AvatarOptions`          | Avatar upload and display configuration                                  | `avatar={{ size: 256, extension: 'webp' }}`              |
 | `additionalFields`           | `AdditionalFields`       | Custom fields for sign-up and account settings                           | See example below                                        |
 | `credentials.forgotPassword` | `boolean`                | Enable forgot password flow                                              | `credentials={{ forgotPassword: true }}`                 |
+| `magicLink`                  | `boolean`                | Enable passwordless magic link sign-in option                            | `magicLink`                                              |
 
 ### Enable OAuth Providers
 
 To enable Google sign-in (or other OAuth providers), add the `social` prop to the provider:
 
 ```tsx
-import { NeonAuthUIProvider } from '@neondatabase/neon-js/auth/react';
+import { NeonAuthUIProvider } from '@neondatabase/auth-ui';
 import { authClient } from './auth';
 
 function App() {
@@ -79,7 +89,7 @@ function App() {
 If using React Router, pass the `navigate` function and a custom `Link` component:
 
 ```tsx
-import { NeonAuthUIProvider } from '@neondatabase/neon-js/auth/react';
+import { NeonAuthUIProvider } from '@neondatabase/auth-ui';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import { authClient } from './auth';
 
@@ -145,6 +155,8 @@ For complete prop documentation, see the TypeScript types exported from `@neonda
 | ------------ | ------------------------------------------------- | ---------- | ------------------------------------------------------------------- |
 | `<AuthView>` | All-in-one auth UI with sign-in and sign-up forms | `pathname` | [auth-view](https://legacy.better-auth-ui.com/components/auth-view) |
 
+`<AuthView>` accepts both `path` and `pathname`. Use `path` for a bare view name (for example, `"sign-in"`). Use `pathname` for a full URL path (for example, `"/auth/sign-in"`); the component extracts the last segment automatically.
+
 **Form Components:** `<SignUpForm>`, `<SignInForm>`, `<ForgotPasswordForm>`, `<ResetPasswordForm>`, and `<AuthCallback>` are also available. `<AuthView>` includes sign-in and sign-up functionality with a "create account" link to switch between forms. Use the form components separately if you need more control over layout.
 
 **OAuth Provider Buttons:** OAuth provider buttons (Google, GitHub, Vercel, etc.) appear automatically in `<AuthView>` when configured via the `social.providers` prop. OAuth buttons do not appear in standalone `<SignInForm>` or `<SignUpForm>` components.
@@ -170,7 +182,7 @@ If your project doesn't use Tailwind CSS, import the pre-built CSS bundle:
 
 ```typescript
 // In your root layout or app entry point
-import '@neondatabase/neon-js/ui/css';
+import '@neondatabase/auth-ui/css';
 ```
 
 This includes all necessary styles (~47KB minified) with no additional configuration required.
@@ -182,7 +194,7 @@ If your project already uses Tailwind CSS v4, import the Tailwind-ready CSS to a
 ```css
 /* In your main CSS file (for example, globals.css) */
 @import 'tailwindcss';
-@import '@neondatabase/neon-js/ui/tailwind';
+@import '@neondatabase/auth-ui/tailwind';
 ```
 
 This imports only the theme variables. Your Tailwind build generates the utility classes.
@@ -198,18 +210,47 @@ For customization options, see **Styling** details within each Better Auth UI co
 ### Basic Auth Flow
 
 ```tsx
-import { AuthView } from '@neondatabase/neon-js/auth/react/ui';
-import '@neondatabase/neon-js/ui/css';
+import { AuthView } from '@neondatabase/auth-ui';
+import '@neondatabase/auth-ui/css';
 
 function App() {
   return <AuthView pathname="sign-in" />;
 }
 ```
 
+### Next.js App Router
+
+For Next.js App Router, use a catch-all route to handle all auth views. Create `app/auth/[path]/page.tsx`:
+
+```tsx
+import { AuthView } from '@neondatabase/auth-ui';
+import { authViewPaths } from '@neondatabase/auth-ui/server';
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return Object.values(authViewPaths).map((path) => ({ path }));
+}
+
+export default async function AuthPage({
+  params,
+}: {
+  params: Promise<{ path: string }>;
+}) {
+  const { path } = await params;
+
+  return (
+    <main className="flex min-h-screen items-center justify-center p-4">
+      <AuthView path={path} />
+    </main>
+  );
+}
+```
+
 ### User Menu
 
 ```tsx
-import { UserButton } from '@neondatabase/neon-js/auth/react/ui';
+import { UserButton } from '@neondatabase/auth-ui';
 import { authClient } from './auth';
 
 function Header() {
@@ -224,7 +265,7 @@ function Header() {
 ### Protected Route
 
 ```tsx
-import { SignedIn, SignedOut, RedirectToSignIn } from '@neondatabase/neon-js/auth/react/ui';
+import { SignedIn, SignedOut, RedirectToSignIn } from '@neondatabase/auth-ui';
 
 function Dashboard() {
   return (

@@ -7,12 +7,13 @@ page_description: >-
   Discover how these changes will impact performance, development, and
   operations.
 ogImage: ''
-updatedOn: '2025-07-05T07:20:00+00:00'
+updatedOn: '2026-05-09T12:27:33.909Z'
 enableTableOfContents: true
 nextLink:
   title: PostgreSQL 18 Asynchronous I/O
   slug: postgresql-18/asynchronous-io
 ---
+
 <Admonition type="info" id="CTA">
 PostgreSQL 18's new features apply to any Postgres deployment, not just [Neon](https://neon.com), so you can use this guide wherever you run Postgres. If you're an enterprise looking for managed cloud Postgres built for the AI era, [Lakebase](https://www.databricks.com/product/lakebase) delivers the performance, security, and deep Lakehouse integration that modern data teams need. If you're a developer or startup who needs to ship and scale fast, Neon gives you the best Postgres platform to build on.
 </Admonition>
@@ -170,7 +171,7 @@ You configure it in `pg_hba.conf` like other auth methods, and load token valida
 
 ### MD5 Deprecation Warning
 
-MD5 password authentication is now deprecated in favor of the more secure SCRAM-SHA-256 method. The MD5 method will still work, but you will be removed in the next major release.
+MD5 password authentication is now deprecated in favor of the more secure SCRAM-SHA-256 method. The MD5 method will still work, but it will be removed in the next major release.
 
 ### Enhanced TLS Support
 

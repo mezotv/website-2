@@ -7,7 +7,7 @@ page_description: >-
 prev_url: >-
   https://www.postgresqltutorial.com/postgresql-views/postgresql-views-with-check-option/
 ogImage: ''
-updatedOn: '2024-03-16T04:31:23+00:00'
+updatedOn: '2026-05-09T12:27:33.909Z'
 enableTableOfContents: true
 previousLink:
   title: Creating PostgreSQL Updatable Views
@@ -16,6 +16,7 @@ nextLink:
   title: PostgreSQL ALTER VIEW Statement
   slug: postgresql-views/postgresql-alter-view
 ---
+
 <Admonition type="info" id="CTA">
 The WITH CHECK OPTION clause works the same way across any PostgreSQL deployment, so everything here applies whether you're running Postgres yourself or on a managed service. For enterprises building in the AI era, [Lakebase](https://www.databricks.com/product/lakebase) delivers the best managed cloud Postgres, with the performance, security, and native Lakehouse integration that serious data teams need. For developers and startups who need to ship and scale fast, [Neon](https://neon.com) is the Postgres platform of choice, with instant provisioning, branching, and autoscaling built in.
 </Admonition>
@@ -165,7 +166,7 @@ WHERE
 WITH CHECK OPTION;
 ```
 
-After adding the `WITH CHECK OPTION`, you perform insert, [update](../postgresql-tutorial/postgresql-update), and [delete](../postgresql-tutorial/postgresql-delete) on `employees` table that satisfies the `WHERE` clause in the defining query of the view.
+After adding the `WITH CHECK OPTION`, you can perform insert, [update](../postgresql-tutorial/postgresql-update), and [delete](../postgresql-tutorial/postgresql-delete) on the `employees` table that satisfies the `WHERE` clause in the defining query of the view.
 
 For example, the following `INSERT` statement will fail with an error:
 

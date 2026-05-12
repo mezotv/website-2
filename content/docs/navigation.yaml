@@ -96,6 +96,8 @@
           items:
             - title: Overview
               slug: import/region-migration
+            - title: Azure regions deprecation
+              slug: import/azure-regions-deprecation
             - title: Neon to another region
               slug: import/migrate-neon-to-another-region
             - title: Neon to Lakebase
@@ -383,6 +385,8 @@
               slug: guides/ruby-on-rails
             - title: SQLAlchemy
               slug: guides/sqlalchemy
+            - title: Tortoise ORM
+              slug: guides/tortoise-orm
             - title: TypeORM
               slug: guides/typeorm
     - section: Backend
@@ -482,6 +486,8 @@
                       slug: auth/guides/plugins/email-otp
                     - title: JWT
                       slug: auth/guides/plugins/jwt
+                    - title: Magic Link
+                      slug: auth/guides/plugins/magic-link
                     - title: OpenAPI
                       slug: auth/guides/plugins/openapi
                     - title: Organization
@@ -801,7 +807,7 @@
                 - title: Bemi
                   slug: guides/bemi
                 - title: ClickHouse
-                  slug: https://docs.peerdb.io/mirror/cdc-neon-clickhouse
+                  slug: guides/logical-replication-clickhouse
                 - title: Confluent
                   slug: guides/logical-replication-kafka-confluent
                 - title: Databricks

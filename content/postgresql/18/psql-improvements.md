@@ -6,7 +6,7 @@ page_description: >-
   prepared statement support, improved prompt options, and improved workflow
   capabilities that make database development more efficient.
 ogImage: ''
-updatedOn: '2025-08-02T10:30:00+00:00'
+updatedOn: '2026-05-09T12:27:33.909Z'
 enableTableOfContents: true
 previousLink:
   title: PostgreSQL 18 pg_stat_io Improvements
@@ -15,6 +15,7 @@ nextLink:
   title: PostgreSQL 18 Autovacuum Maintenance Configuration
   slug: postgresql-18/autovacuum-maintenance-configuration
 ---
+
 <Admonition type="info" id="CTA">
 The psql improvements covered here ship with PostgreSQL 18 itself, so pipeline queries, prepared statement commands, and the new prompt options work against any Postgres deployment. If you're an enterprise running AI workloads on the Lakehouse, [Lakebase](https://www.databricks.com/product/lakebase) delivers managed Postgres that's fast, secure, and natively integrated so your operational and analytical data live side by side. If you're a developer or startup who needs to ship and scale quickly, [Neon](https://neon.com) gives you the most flexible Postgres platform around, with instant branching, autoscaling, and a generous free tier.
 </Admonition>
@@ -55,7 +56,7 @@ PostgreSQL 18 introduces seven new pipeline-related commands:
 
 - `\getresults` - Retrieves and displays results from previously sent pipeline queries.
 
-All these commands work together to allow you to manage complex query sequences efficiently. For this you need to make sure that you have `psql` 18 beta or later installed, as these commands are not available in earlier versions.
+All these commands work together to allow you to manage complex query sequences efficiently. For this, you need to make sure that you have `psql` 18 beta or later installed, as these commands are not available in earlier versions.
 
 ### Basic Pipeline Example
 

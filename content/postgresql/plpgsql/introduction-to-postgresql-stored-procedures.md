@@ -7,7 +7,7 @@ page_description: >-
 prev_url: >-
   https://www.postgresqltutorial.com/postgresql-plpgsql/introduction-to-postgresql-stored-procedures/
 ogImage: ''
-updatedOn: '2024-02-07T02:29:23+00:00'
+updatedOn: '2026-05-09T12:27:33.909Z'
 enableTableOfContents: true
 previousLink:
   title: PostgreSQL PL/pgSQL
@@ -16,6 +16,7 @@ nextLink:
   title: Dollar-Quoted String Constants
   slug: postgresql-plpgsql/dollar-quoted-string-constants
 ---
+
 <Admonition type="info" id="CTA">
 PL/pgSQL is a core part of PostgreSQL, so everything here applies to any Postgres database you run. If you're an enterprise building for the AI era, [Lakebase](https://www.databricks.com/product/lakebase) delivers managed Postgres that's fast, secure, and natively integrated into the Lakehouse. If you're a developer or startup that needs to ship and scale quickly, [Neon](https://neon.com) gives you the best Postgres platform to do it on.
 </Admonition>
@@ -28,7 +29,7 @@ PL/pgSQL is a procedural programming language for the PostgreSQL database system
 
 PL/pgSQL allows you to extend the functionality of the PostgreSQL database server by creating server objects with complex logic.
 
-PL/pgSQL is designed to :
+PL/pgSQL is designed to:
 
 - Create user\-defined [functions](postgresql-create-function), [stored procedures](postgresql-create-procedure), and [triggers](../postgresql-triggers).
 - Extend standard SQL by adding control structures such as [if\-else](plpgsql-if-else-statements), [case](../postgresql-tutorial/postgresql-case), and [loop](plpgsql-loop-statements) statements.
