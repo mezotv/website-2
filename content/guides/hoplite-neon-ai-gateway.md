@@ -14,9 +14,6 @@ Your team has three coding agents running. One is fixing a flaky test, one is ha
 
 In this guide, you'll connect Neon AI Gateway to Hoplite, pick a gateway model for your threads, and use it in shared threads, parallel runs, Slack and iMessage, automations, and the Hoplite API.
 
-{/* SCREENSHOT: Hoplite thread running on a Neon AI Gateway model, with several teammates shown in the thread header. Save as /guides/images/hoplite-neon-ai-gateway/hero.png */}
-![A Hoplite thread running on a Neon AI Gateway model](/guides/images/hoplite-neon-ai-gateway/hero.png)
-
 ## What you get from the combination
 
 Hoplite runs the agents and controls who can work with them. Neon AI Gateway controls which models they can call and who pays for them. Together you get:
@@ -53,9 +50,6 @@ The CLI prints the `api_token` (it starts with `nt_live_`) once. Copy it somewhe
 
 In the Neon Console, click **Connect** at the top of the sidebar and open the **AI Gateway** tab. Click **Reveal credential** to show the token.
 
-{/* SCREENSHOT: Neon Console Connect dialog, AI Gateway tab, with the credential revealed (blur the token). Save as /guides/images/hoplite-neon-ai-gateway/neon-connect-ai-gateway.png */}
-![Neon Console Connect dialog showing the AI Gateway tab](/guides/images/hoplite-neon-ai-gateway/neon-connect-ai-gateway.png)
-
 </TabItem>
 </Tabs>
 
@@ -83,22 +77,21 @@ In the **Add gateway** dialog:
 4. Paste the `nt_live_...` token into **Neon AI Gateway API key**.
 5. Click **Verify and add**.
 
-{/* SCREENSHOT: Hoplite Add gateway dialog with Neon AI Gateway selected, showing the Name, Neon branch host, and Neon AI Gateway API key fields (blur the key). Save as /guides/images/hoplite-neon-ai-gateway/hoplite-add-gateway.png */}
 ![The Add gateway dialog in Hoplite with Neon AI Gateway selected](/guides/images/hoplite-neon-ai-gateway/hoplite-add-gateway.png)
 
 Hoplite checks the key against Neon and adds the gateway's tool-capable models. The gateway then appears in the **Gateways** list with its number of verified models and an **Active** status.
 
-{/* SCREENSHOT: Hoplite Settings > Organization > Models, Gateways list showing the Neon gateway with its verified model count and Active status. Save as /guides/images/hoplite-neon-ai-gateway/hoplite-gateway-active.png */}
 ![The Neon gateway listed as Active under Gateways in Hoplite](/guides/images/hoplite-neon-ai-gateway/hoplite-gateway-active.png)
+
+Open the gateway to review its verified models.
+
+![Verified models for the active Neon AI Gateway in Hoplite](/guides/images/hoplite-neon-ai-gateway/hoplite-gateway-models.png)
 
 If verification fails, check that the host has no trailing path and that the token has the `ai_gateway:invoke` scope.
 
 ## Pick a gateway model for your threads
 
 Verified gateway models show up in the model picker in every thread. Pick one in the new-thread dialog, or switch an existing thread with the `/model` slash command. To make a gateway model the default for a project, set it under **Settings** > **Project** > **Agents**.
-
-{/* SCREENSHOT: Hoplite new-thread dialog with the model picker open, showing Neon AI Gateway models. Save as /guides/images/hoplite-neon-ai-gateway/hoplite-model-picker.png */}
-![Neon AI Gateway models in the Hoplite model picker](/guides/images/hoplite-neon-ai-gateway/hoplite-model-picker.png)
 
 Start with a small task, such as a failing test, and open the run's cost breakdown when it finishes. A BYOK badge means the run went through Neon AI Gateway.
 
@@ -113,9 +106,6 @@ Anything that starts a Hoplite thread can run on a gateway model.
 A Hoplite thread shows up for everyone in the organization, not only the person who started it. Tool calls and diffs stream to whoever has it open, and any owner, admin, or member can answer an approval. Hoplite calls this multiplayer AI, meaning one agent context that teammates, integrations, and automations can all write into.
 
 The thread keeps its model when someone else takes over. If a teammate picks it up at 9 a.m., it keeps running on the same gateway model and bills the same Neon project, with no personal API key involved.
-
-{/* SCREENSHOT: Shared Hoplite thread with two teammates messaging the agent and an approval prompt. Save as /guides/images/hoplite-neon-ai-gateway/hoplite-multiplayer-thread.png */}
-![A shared Hoplite thread with multiple teammates](/guides/images/hoplite-neon-ai-gateway/hoplite-multiplayer-thread.png)
 
 ### Swarm coding with parallel threads
 
@@ -134,9 +124,6 @@ Threads started from Slack or iMessage use the project's default model, so set a
 Hoplite Automations run coding agents on a schedule or when something happens in GitHub, Sentry, Linear, Slack, or a webhook. Each run is an ordinary thread your team can open, steer, and review.
 
 Nobody watches a scheduled run as it happens, so its cost is easy to miss. Running automations on a gateway model puts that usage on your Neon bill with everything else. A nightly Sentry automation, for example, can reproduce new errors with a failing test and open a pull request, and each of those runs shows up as gateway usage.
-
-{/* SCREENSHOT: Hoplite automation configuration with a schedule trigger and a Neon AI Gateway model selected. Save as /guides/images/hoplite-neon-ai-gateway/hoplite-automation.png */}
-![A Hoplite automation using a Neon AI Gateway model](/guides/images/hoplite-neon-ai-gateway/hoplite-automation.png)
 
 ### Build a software factory
 
